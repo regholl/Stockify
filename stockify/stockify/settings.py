@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&)*^@$!mu@je7nhyt!pb=b0u#dk^va8!sban(h)biv!o6_$=b8'
+SECRET_KEY = 'django-insecure-i)%3vx9kxhs^_zs7gc$7c=%z1!u6dixd2iuwg3zp&)rfhsn-ui'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'USER.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,13 +75,8 @@ WSGI_APPLICATION = 'stockify.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'ZT7qI9L3Oa0LiCqMtegX',
-        'HOST': 'containers-us-west-137.railway.app',
-        'PORT': '7974',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
