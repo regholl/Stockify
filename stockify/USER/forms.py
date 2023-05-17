@@ -7,11 +7,11 @@ from .models import *
 class CreateUserForm(UserCreationForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
-    email =forms.EmailField()
+    email = forms.CharField()
 
     class Meta:
-        models = User
-        fields =['first_name','last_name','username','email','password1','password2']
+        model = User
+        fields = ['first_name','last_name','username','email','password1','password2']
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -26,5 +26,18 @@ class LoginForm(AuthenticationForm):
         widget= forms.PasswordInput(attrs={'autocomplete':'current-password','class':'form-comtrol'})        
     )
 
-    
+
+class User_UpdateForm(forms.ModelForm):
+    first_name = forms.CharField()
+    last_name = forms.CharField() 
+    email = forms.CharField()
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','username','email']
+
+class Update_ProfileForm(forms.ModelForm):
+
+    class Meta:
+        models = Profile
+        fields =['phone_number','address','bio','image']
 
