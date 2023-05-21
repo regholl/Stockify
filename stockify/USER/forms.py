@@ -38,6 +38,6 @@ class User_UpdateForm(forms.ModelForm):
 class Update_ProfileForm(forms.ModelForm):
 
     class Meta:
-        models = Profile
+        model = Profile
         fields =['phone_number','address','bio','image']
 

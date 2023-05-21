@@ -6,12 +6,10 @@ from .models import Profile
 @receiver(post_save,sender =User)
 def created_profile(sender,instance,created,**kwargs):
     if created:
-        Profile.objects.update_or_create(
-            user = instance,
-            user_status = instance.profile.user_status
-        )
-
+        Profile.objects.create(user=instance)
+'''
 @receiver(post_save,sender =User)
 def save_profile(sender,instance,**kwargs):
-    instance.profile.save()  
+        instance.profile.save()
+'''
 

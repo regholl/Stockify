@@ -2,9 +2,11 @@ from django.shortcuts import render,redirect
 from .forms import CreateUserForm,ProfileForm,LoginForm,User_UpdateForm,Update_ProfileForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 
 # Create your views here.
+def home(request):
+    return render(request,'User/home.html')
 def register(request):
     if request.method =='POST':
         form = CreateUserForm(request.POST)
@@ -18,7 +20,7 @@ def register(request):
     context = {'form':form}
     return render(request,'User/register.html',context)
 
-def login(request):
+def login_page(request):
     if request.method =='POST':
         form = LoginForm(request,data =request.POST)
         if form.is_valid():
@@ -33,11 +35,21 @@ def login(request):
             
     else:
         form = LoginForm()
+
     context = {'form':form}
     return render(request,'User/login.html',context)
 
+def logout_page(request):
+    logout(request)
+    return redirect('login')
+
 @login_required
 def profile(request):
+    return render(request,'User/profile.html')
+
+
+@login_required
+def profile_update(request):
     if request.method =='POST':
         u_form = User_UpdateForm(request.POST,instance=request.user)
         p_form = Update_ProfileForm(request.POST,
@@ -59,5 +71,5 @@ def profile(request):
         'p_form':p_form
     }
 
-    return render(request,'User/profile.html',context)
+    return render(request,'User/profile_update.html',context)
     
