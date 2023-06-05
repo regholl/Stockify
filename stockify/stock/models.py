@@ -8,7 +8,9 @@ class StockDeposit(models.Model):
     amount = models.IntegerField()
     unit_price = models.DecimalField(max_digits=10,decimal_places=2)
     total_price = models.DecimalField(max_digits=10,decimal_places=2)
+    user_balance = models.DecimalField(max_digits=10,decimal_places=2,default=10000.00)
 
     def __str__(self):
         return f'{self.user.username} - {self.stock_name}'
     
+
